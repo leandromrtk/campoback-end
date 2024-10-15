@@ -1,0 +1,21 @@
+const mongoose = require('mongoose');
+//const bcrypt = require('bcryptjs')
+const RegistroSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    location: {
+        latitude: { type: Number, required: true },
+        longitude: { type: Number, required: true }
+    },
+    photo: { type: String, required: true },
+    created_at: { type: Date, default: Date.now }
+});
+
+/*RegistroSchema.pre('save', async function(next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10)
+    }
+    next()
+});*/
+
+module.exports = mongoose.model('Registro', RegistroSchema);
